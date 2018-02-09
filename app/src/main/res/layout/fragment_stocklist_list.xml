@@ -9,5 +9,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.logicdojo.daytradealert.StockListFragment"
-    tools:listitem="@layout/fragment_stocklist" />
+    tools:context="com.logicdojo.daytradealert.ui.StockListFragment"
+    tools:listitem="@layout/item_stocklist" />

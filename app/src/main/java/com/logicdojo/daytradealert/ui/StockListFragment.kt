@@ -1,4 +1,4 @@
-package com.logicdojo.daytradealert
+package com.logicdojo.daytradealert.ui
 
 import android.app.Fragment
 import android.content.Context
@@ -9,6 +9,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.logicdojo.daytradealert.R
+import com.logicdojo.daytradealert.service.QuestradeService
+import com.logicdojo.daytradealert.model.ChartDetails
 import retrofit2.Retrofit
 
 /**
@@ -79,7 +82,7 @@ class StockListFragment : Fragment() {
                 .baseUrl("https://api.github.com/")
                 .build()
 
-        val service = retrofit.create<TradeService>(TradeService::class.java)
+        val service = retrofit.create<QuestradeService>(QuestradeService::class.java)
         return emptyList()
     }
 

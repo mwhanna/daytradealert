@@ -1,4 +1,4 @@
-package com.logicdojo.daytradealert
+package com.logicdojo.daytradealert.model
 
 /**
  * Created by matt_hanna on 2018-01-31.

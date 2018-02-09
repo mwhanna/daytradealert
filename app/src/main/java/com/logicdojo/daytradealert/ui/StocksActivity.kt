@@ -1,4 +1,4 @@
-package com.logicdojo.daytradealert
+package com.logicdojo.daytradealert.ui
 
 import android.app.Fragment
 import android.os.Bundle
@@ -9,14 +9,15 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import kotlinx.android.synthetic.main.activity_main.*
+import com.logicdojo.daytradealert.R
+import kotlinx.android.synthetic.main.activity_stocks.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
 class StocksActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_stocks)
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { view ->
@@ -45,7 +46,7 @@ class StocksActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
+        menuInflater.inflate(R.menu.stocks_menu, menu)
         return true
     }
 

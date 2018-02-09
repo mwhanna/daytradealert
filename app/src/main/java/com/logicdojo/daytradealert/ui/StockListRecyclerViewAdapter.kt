@@ -1,12 +1,14 @@
-package com.logicdojo.daytradealert
+package com.logicdojo.daytradealert.ui
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.logicdojo.daytradealert.R
 
-import com.logicdojo.daytradealert.StockListFragment.OnListFragmentInteractionListener
+import com.logicdojo.daytradealert.ui.StockListFragment.OnListFragmentInteractionListener
+import com.logicdojo.daytradealert.model.ChartDetails
 
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
@@ -19,7 +21,7 @@ class StockListRecyclerViewAdapter(
         RecyclerView.Adapter<StockListRecyclerViewAdapter.StockViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StockViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_stocklist, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_stocklist, parent, false)
         return StockViewHolder(view)
     }
 
