@@ -5,14 +5,15 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
-import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.logicdojo.daytradealert.R
 import kotlinx.android.synthetic.main.activity_stocks.*
-import kotlinx.android.synthetic.main.app_bar_main.*
 
+/**
+ * Activity for stocks list
+ **/
 class StocksActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,14 +26,14 @@ class StocksActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                     .setAction("Action", null).show()
         }
 
-        val toggle = ActionBarDrawerToggle(
-                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer_layout.addDrawerListener(toggle)
-        toggle.syncState()
+//        val toggle = ActionBarDrawerToggle(
+//                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+//        drawer_layout.addDrawerListener(toggle)
+//        toggle.syncState()
+//
+//        nav_view.setNavigationItemSelectedListener(this)
 
-        nav_view.setNavigationItemSelectedListener(this)
-
-        val stockListFragment : Fragment = StockListFragment()
+        val stockListFragment : Fragment = StockListFragment.newInstance(4)
         fragmentManager.beginTransaction().add(R.id.stock_list_fragment_container, stockListFragment).commit()
     }
 

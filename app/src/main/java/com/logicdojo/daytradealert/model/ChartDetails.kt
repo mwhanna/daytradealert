@@ -1,13 +1,13 @@
 package com.logicdojo.daytradealert.model
 
 /**
- * Created by matt_hanna on 2018-02-08.
- */
+ * Chart details object
+ **/
 class ChartDetails(val symbol: String,
                    val price: Double,
                    val name: String,
                    val dailyChange: Double,
-                   val trendingUp: Boolean = false,
+                   val trendingStatus: TrendStatus,
                    val netChange: Double? = null,
                    val volume: Double? = null,
                    val rsi: Double? = null,
@@ -22,4 +22,19 @@ enum class TrendLevel(val level: Int) {
     SMALL(1),
     MEDIUM(2),
     HIGH(3)
+}
+
+enum class TrendStatus(level: String) {
+    RISING_SLOWLY("RISING SLOWLY"),
+    RISING("RISING"),
+    RISING_FAST("RISING FAST"),
+    EXPLODING("EXPLODING"),
+    FALLING_SLOWLY("FALLING SLOWLY"),
+    FALLING("FALLING SLOWLY"),
+    FALLING_FAST("FALLING FAST"),
+    PLUMMETING("PLUMMETING"),
+    TURNING_AROUND("TURNING AROUND"),
+    TURNING_DOWNWARD("TURNING DOWNWARD"),
+    SLOWING_DOWN("SLOWING DOWN"),
+    FLAT("FLAT")
 }

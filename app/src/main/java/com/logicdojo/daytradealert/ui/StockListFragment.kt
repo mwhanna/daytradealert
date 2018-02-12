@@ -1,34 +1,22 @@
 package com.logicdojo.daytradealert.ui
 
 import android.app.Fragment
-import android.content.Context
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.logicdojo.daytradealert.R
 import com.logicdojo.daytradealert.service.QuestradeService
 import com.logicdojo.daytradealert.model.ChartDetails
+import com.logicdojo.daytradealert.model.TrendStatus
+import de.codecrafters.tableview.TableView
 import retrofit2.Retrofit
 
 /**
- * A fragment representing a list of Items.
- *
- *
- * Activities containing this fragment MUST implement the [OnListFragmentInteractionListener]
- * interface.
- */
-/**
- * Mandatory empty constructor for the fragment manager to instantiate the
- * fragment (e.g. upon screen orientation changes).
- */
+ * Fragment for stocks list
+**/
 class StockListFragment : Fragment() {
-    // TODO: Customize parameters
-    private var mColumnCount = 3
-    private var mListener: OnListFragmentInteractionListener? = null
+    private var mColumnCount = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,39 +30,26 @@ class StockListFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_stocklist_list, container, false)
 
-        // Set the adapter
-        if (view is RecyclerView) {
-            val context = view.getContext()
-            if (mColumnCount <= 1) {
-                view.layoutManager = LinearLayoutManager(context)
-            } else {
-                view.layoutManager = GridLayoutManager(context, mColumnCount)
-            }
-            val listOfCharts = ArrayList<ChartDetails>()
-            listOfCharts.add(ChartDetails("AAPL", 162.80, "Apple Inc.", 5.25))
-            listOfCharts.add(ChartDetails("MARI", 162.80, "Maricann", 5.25))
-            listOfCharts.add(ChartDetails("MPX", 162.80, "Apple Inc.", 5.25))
-            listOfCharts.add(ChartDetails("HVT", 162.80, "Apple Inc.", 5.25))
-            listOfCharts.add(ChartDetails("TNY", 162.80, "Apple Inc.", 5.25))
-            listOfCharts.add(ChartDetails("XIV", 0.380, "Apple Inc.", 5.25))
-            view.adapter = StockListRecyclerViewAdapter(listOfCharts, mListener)
+        val listOfCharts = ArrayList<ChartDetails>()
+        listOfCharts.add(ChartDetails("AAPL", 162.80, "Apple Inc.", 5.25, TrendStatus.RISING))
+        listOfCharts.add(ChartDetails("MARI", 162.80, "Maricann", 5.25, TrendStatus.RISING))
+        listOfCharts.add(ChartDetails("MPX", 162.80, "Apple Inc.", 5.25, TrendStatus.RISING))
+        listOfCharts.add(ChartDetails("HVT", 162.80, "Apple Inc.", 5.25, TrendStatus.RISING))
+        listOfCharts.add(ChartDetails("TNY", 162.80, "Apple Inc.", 5.25, TrendStatus.RISING))
+        listOfCharts.add(ChartDetails("XIV", 0.380, "Apple Inc.", 5.25, TrendStatus.RISING))
+        listOfCharts.add(ChartDetails("AAPL", 162.80, "Apple Inc.", 5.25, TrendStatus.RISING))
+        listOfCharts.add(ChartDetails("MARI", 162.80, "Maricann", 5.25, TrendStatus.RISING))
+        listOfCharts.add(ChartDetails("MPX", 162.80, "Apple Inc.", 5.25, TrendStatus.RISING))
+        listOfCharts.add(ChartDetails("HVT", 162.80, "Apple Inc.", 5.25, TrendStatus.RISING))
+        listOfCharts.add(ChartDetails("TNY", 162.80, "Apple Inc.", 5.25, TrendStatus.RISING))
+        listOfCharts.add(ChartDetails("XIV", 0.380, "Apple Inc.", 5.25, TrendStatus.RISING))
+
+        if (view is TableView<*>) {
+            view.headerAdapter = StockTableHeaderAdapter(view.context, 4)
+            view.dataAdapter = StockTableDataAdapter(view.context, listOfCharts)
         }
+
         return view
-    }
-
-
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        if (context is OnListFragmentInteractionListener) {
-            mListener = context
-        } else {
-            throw RuntimeException(context!!.toString() + " must implement OnListFragmentInteractionListener")
-        }
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        mListener = null
     }
 
     fun getStocks() : List<ChartDetails> {
@@ -86,26 +61,11 @@ class StockListFragment : Fragment() {
         return emptyList()
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments](http://developer.android.com/training/basics/fragments/communicating.html) for more information.
-     */
-    interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: ChartDetails)
-    }
-
     companion object {
 
-        // TODO: Customize parameter argument names
         private val ARG_COLUMN_COUNT = "column-count"
+        private val TABLE_HEADERS : Array<String> = arrayOf("Name (A-Z)", "Trend", "Price", "Change")
 
-        // TODO: Customize parameter initialization
         fun newInstance(columnCount: Int): StockListFragment {
             val fragment = StockListFragment()
             val args = Bundle()

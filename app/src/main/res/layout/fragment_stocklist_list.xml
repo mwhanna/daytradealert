@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/list"
-    android:name="com.logicdojo.daytradealert.StockListFragment"
+<de.codecrafters.tableview.SortableTableView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:table="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tableView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    app:layoutManager="LinearLayoutManager"
-    tools:context="com.logicdojo.daytradealert.ui.StockListFragment"
-    tools:listitem="@layout/item_stocklist" />
+    android:background="@color/colorPrimary"
+    android:showDividers="none"
+    table:tableView_columnCount="4"
+    table:tableView_headerColor="@color/colorPrimary"/>

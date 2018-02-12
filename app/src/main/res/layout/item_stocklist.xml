@@ -5,12 +5,43 @@
     android:orientation="horizontal"
     android:background="@color/colorPrimary">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_margin"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/white"
+            style="@style/ShadowOverlayText"
+            android:textAppearance="?attr/textAppearanceListItem" />
+        <TextView
+            android:id="@+id/symbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:gravity="bottom"
+            style="@style/ShadowOverlayText"
+            android:textColor="@color/white"
+            android:textAppearance="?attr/textAppearanceListItem"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <TextView
-        android:id="@+id/symbol"
+        android:id="@+id/trend_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
         android:textColor="@color/white"
+        style="@style/ShadowOverlayText"
+        android:layout_gravity="center_vertical|end"
         android:textAppearance="?attr/textAppearanceListItem" />
 
     <TextView
@@ -19,13 +50,18 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
         android:textColor="@color/white"
+        style="@style/ShadowOverlayText"
+        android:layout_gravity="center_vertical|end"
         android:textAppearance="?attr/textAppearanceListItem" />
 
     <TextView
-        android:id="@+id/dailyChange"
+        android:id="@+id/daily_change"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
         android:textColor="@color/white"
+        style="@style/ShadowOverlayText"
+        android:layout_gravity="center_vertical|end"
         android:textAppearance="?attr/textAppearanceListItem" />
+    </LinearLayout>
 </LinearLayout>
