@@ -10,10 +10,11 @@ import android.widget.TextView
 import com.logicdojo.daytradealert.R
 import de.codecrafters.tableview.TableHeaderAdapter
 
+
 /**
- * Adapter for stock table header
+ * Adapter for crypto table header
  */
-class StockTableHeaderAdapter(context: Context, columnCount: Int) : TableHeaderAdapter(context, columnCount) {
+class CryptoTableHeaderAdapter(context: Context, columnCount: Int) : TableHeaderAdapter(context, columnCount) {
     private var headers: Array<String> = arrayOf("Name", "Trend", "Price", "Change")
     private var paddingLeft = 20
     private var paddingTop = 30

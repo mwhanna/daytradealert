@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<de.codecrafters.tableview.SortableTableView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:table="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cryptoTableView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:showDividers="none"
+    table:tableView_columnCount="4"
+    table:tableView_headerColor="@color/colorPrimary"/>

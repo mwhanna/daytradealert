@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:gravity="bottom"
+            android:textSize="10sp"
             style="@style/ShadowOverlayText"
             android:textColor="@color/white"
             android:textAppearance="?attr/textAppearanceListItem"/>
@@ -50,6 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
         android:textColor="@color/white"
+        android:textStyle="bold"
         style="@style/ShadowOverlayText"
         android:layout_gravity="center_vertical|end"
         android:textAppearance="?attr/textAppearanceListItem" />
@@ -59,6 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
+        android:textStyle="bold"
         android:textColor="@color/white"
         style="@style/ShadowOverlayText"
         android:layout_gravity="center_vertical|end"

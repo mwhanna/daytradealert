@@ -2,13 +2,14 @@ package com.logicdojo.daytradealert.ui
 
 import android.app.Fragment
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
+import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.logicdojo.daytradealert.R
+import com.logicdojo.daytradealert.model.ExchangeType
 import kotlinx.android.synthetic.main.activity_stocks.*
 
 /**
@@ -21,20 +22,15 @@ class StocksActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         setContentView(R.layout.activity_stocks)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
+        val toggle = ActionBarDrawerToggle(
+                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawer_layout.addDrawerListener(toggle)
+        toggle.syncState()
 
-//        val toggle = ActionBarDrawerToggle(
-//                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-//        drawer_layout.addDrawerListener(toggle)
-//        toggle.syncState()
-//
-//        nav_view.setNavigationItemSelectedListener(this)
+        nav_view.setNavigationItemSelectedListener(this)
 
-        val stockListFragment : Fragment = StockListFragment.newInstance(4)
-        fragmentManager.beginTransaction().add(R.id.stock_list_fragment_container, stockListFragment).commit()
+        val stockListFragment : Fragment = StockListFragment()
+        fragmentManager.beginTransaction().add(R.id.list_fragment_container, stockListFragment).commit()
     }
 
     override fun onBackPressed() {
@@ -64,22 +60,26 @@ class StocksActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
-                // Handle the camera action
+            R.id.nav_portfolio -> {
+                val portfolioFragment = PortfolioFragment()
+                fragmentManager.beginTransaction().add(R.id.list_fragment_container, portfolioFragment).commit()
             }
-            R.id.nav_gallery -> {
+            R.id.nav_canada_mj -> {
+                val stockListFragment = StockListFragment.newInstance(ExchangeType.TSX)
+                fragmentManager.beginTransaction().add(R.id.list_fragment_container, stockListFragment).commit()
+            }
+            R.id.nav_crypto -> {
+                val cryptoListFragment = CryptoListFragment()
+                fragmentManager.beginTransaction().add(R.id.list_fragment_container, cryptoListFragment).commit()
+            }
+            R.id.nav_nasdaq -> {
+                val stockListFragment = StockListFragment.newInstance(ExchangeType.NASDAQ)
+                fragmentManager.beginTransaction().add(R.id.list_fragment_container, stockListFragment).commit()
+            }
+            R.id.nav_buy -> {
 
             }
-            R.id.nav_slideshow -> {
-
-            }
-            R.id.nav_manage -> {
-
-            }
-            R.id.nav_share -> {
-
-            }
-            R.id.nav_send -> {
+            R.id.nav_sell -> {
 
             }
         }
